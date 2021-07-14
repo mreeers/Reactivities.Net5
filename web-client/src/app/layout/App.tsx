@@ -8,6 +8,7 @@ import ActivityDashboard from "../../fuatures/activities/dashboard/ActivityDashb
 function App() {
     const [activities, setActivities] = useState<Activity[]>([]);
     const [selectedActivity, setsSelectedActivity] = useState<Activity | undefined>(undefined);
+    const [editMode, setEditMode] = useState(false);
 
     useEffect(() => {
         axios.get('https://localhost:5001/api/Activities').then(response => {
@@ -15,7 +16,7 @@ function App() {
         })
     }, []);
 
-    function handleSelectActivity(id: string){
+    function handleSelectActivity(id: string) {
         setsSelectedActivity(activities.find(x => x.id === id))
     }
 
@@ -23,15 +24,27 @@ function App() {
         setsSelectedActivity(undefined);
     }
 
+    function handleFormOpen(id?: string) {
+        id ? handleSelectActivity(id) : handleCancelSelectActivity();
+        setEditMode(true);
+    }
+
+    function handleFormClose() {
+        setEditMode(false);
+    }
+
     return (
         <>
-            <NavBar/>
+            <NavBar openForm={handleFormOpen}/>
             <Container style={{marginTop: '7em'}}>
                 <ActivityDashboard
                     activities={activities}
                     selectedActivity={selectedActivity}
                     selectActivity={handleSelectActivity}
                     cancelSelectActivity={handleCancelSelectActivity}
+                    editMode={editMode}
+                    openForm={handleFormOpen}
+                    closeForm={handleFormClose}
                 />
             </Container>
         </>
