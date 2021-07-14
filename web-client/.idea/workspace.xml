@@ -31,8 +31,14 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.scopes" />
     <property name="ts.external.directory.path" value="C:\Users\verpl\source\repos\Reactivities.Net5\web-client\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\verpl\source\repos\Reactivities.Net5\web-client\src\app\layout" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
@@ -52,6 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1626164938406</updated>
       <workItem from="1626164942701" duration="7506000" />
+      <workItem from="1626241685447" duration="1067000" />
     </task>
     <servers />
   </component>
