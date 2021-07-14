@@ -7,6 +7,7 @@ import ActivityDashboard from "../../fuatures/activities/dashboard/ActivityDashb
 
 function App() {
     const [activities, setActivities] = useState<Activity[]>([]);
+    const [selectedActivity, setsSelectedActivity] = useState<Activity | undefined>(undefined);
 
     useEffect(() => {
         axios.get('https://localhost:5001/api/Activities').then(response => {
@@ -14,11 +15,24 @@ function App() {
         })
     }, []);
 
+    function handleSelectActivity(id: string){
+        setsSelectedActivity(activities.find(x => x.id === id))
+    }
+
+    function handleCancelSelectActivity() {
+        setsSelectedActivity(undefined);
+    }
+
     return (
         <>
             <NavBar/>
             <Container style={{marginTop: '7em'}}>
-                <ActivityDashboard activities={activities} />
+                <ActivityDashboard
+                    activities={activities}
+                    selectedActivity={selectedActivity}
+                    selectActivity={handleSelectActivity}
+                    cancelSelectActivity={handleCancelSelectActivity}
+                />
             </Container>
         </>
     );
