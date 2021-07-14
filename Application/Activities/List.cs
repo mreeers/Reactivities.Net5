@@ -1,6 +1,7 @@
 ﻿using Domain.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Persistence;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace Application.Activities
         public class Handler : IRequestHandler<Query, List<Activity>>
         {
             private readonly DataContext _context;
+            private readonly ILogger _logger;
 
             public Handler(DataContext context)
             {
